@@ -1,0 +1,16 @@
+{
+  "name": "bootcamp-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "projetos/*"
+    ]
+  },
+  "scripts": {
+    "site": "yarn workspace @danilok/site",
+    "site:dev": "yarn site dev"
+  }
+}
