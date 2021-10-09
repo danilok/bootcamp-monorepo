@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@danilok/modulo-comum": "*",
+    "@danilok/ui": "*",
     "next": "latest",
     "next-compose-plugins": "^2.2.1",
     "react": "^17.0.2",
