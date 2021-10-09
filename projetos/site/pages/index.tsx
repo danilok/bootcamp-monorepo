@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import Button from '@danilok/modulo-comum/components/Button'
+import ButtonComum from '@danilok/modulo-comum/components/Button'
+import ButtonUI from '@danilok/ui/src/components/Button'
 
 const Title = styled.h1`
   color: blue;
@@ -9,9 +10,12 @@ const Title = styled.h1`
 export default function Home() {
   return (
     <div>
-      <Button>
-        Adicionando children onde estamos usando o componente
-      </Button>
+      <ButtonComum>
+        Adicionando children onde estamos usando o componente do módulo comum
+      </ButtonComum>
+      <ButtonUI>
+        Adicionando children onde estamos usando o componente  do módulo UI
+      </ButtonUI>
       <Title>Nosso site que usa a lib de componente local</Title>
     </div>
   )
