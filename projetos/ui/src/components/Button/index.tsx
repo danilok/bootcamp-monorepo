@@ -1,13 +1,24 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-interface IButton {
-  children: ReactNode;
+interface ButtonProps {
+  /**
+   * ReactNode para ser renderizado no botão
+   */
+  children: React.ReactNode;
+  /**
+   * Habilita/desabilita o botão
+   */
+  disabled?: boolean;
 }
 
-export default function Button({ children }: IButton) {
+export default function Button({ children, disabled }: ButtonProps) {
   return(
-    <button>
+    <button disabled={disabled}>
       {children}
     </button>
-  )
+  );
+}
+
+Button.defaultProps = {
+  disabled: false,
 }
