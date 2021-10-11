@@ -1,24 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import get from 'lodash/get';
+import { ButtonWrapper, ButtonWrapperProps } from './style/ButtonWrapper';
 
-const ButtonWrapper = styled.button`
-    border: 0;
-    cursor: pointer;
-    padding: 12px 26px;
-    font-weight: bold;
-    opacity: 1;
-    border-radius: 8px;
-    color: ${({ theme, color }) => get(theme, `colors.${color}.contrastText`)};
-    background: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.2;
-    }
-`;
-
-
-interface ButtonProps {
+interface ButtonBaseProps {
   /**
    * ReactNode para ser renderizado no botão
    */
@@ -30,12 +13,33 @@ interface ButtonProps {
   /**
    * Cor do botão
    */
-  color: string;
+  color: 'primary.main' | 'secondary.main' | 'tertiary.main';
+  /**
+   * Tipo do botão
+   */
+  type: 'button' | 'submit' | 'reset';
+  /**
+   * Função a ser executado ao clicar no botão
+   */
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function Button({ children, disabled, color }: ButtonProps) {
+type ButtonProps = ButtonBaseProps & ButtonWrapperProps;
+
+export default function Button({
+  children,
+  disabled,
+  color,
+  type,
+  onClick
+}: ButtonProps): JSX.Element {
   return (
-    <ButtonWrapper disabled={disabled} color={color}>
+    <ButtonWrapper
+      type={type}
+      disabled={disabled}
+      color={color}
+      onClick={onClick}
+    >
       {children}
     </ButtonWrapper>
   );
@@ -44,4 +48,5 @@ export default function Button({ children, disabled, color }: ButtonProps) {
 Button.defaultProps = {
   disabled: false,
   color: 'primary.main',
+  type: 'button',
 }
